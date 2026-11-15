@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solidity Security &amp; Verification — Evidence-Driven Smart Contract Testing</title>
+  <meta name="description" content="Solidity security reviews, Foundry testing, fuzzing, invariant testing and CI verification, with every claim backed by reproducible public evidence.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f172a">
+  <meta property="og:title" content="Solidity Security &amp; Verification">
+  <meta property="og:description" content="Evidence-driven smart contract testing: Foundry, fuzzing, invariants, mutation checks and CI.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Solidity Security &amp; Verification, back to top">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 7.4 5.1 13.6 12 15 6.9-1.4 12-7.6 12-15V7L16 2Z" fill="currentColor" opacity=".15"/><path d="M16 2 4 7v8c0 7.4 5.1 13.6 12 15 6.9-1.4 12-7.6 12-15V7L16 2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m11 16 3.5 3.5L21.5 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Solidity Security &amp; Verification</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#case-study">Case study</a></li>
+          <li><a href="#eip-7702">EIP-7702 lab</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a class="nav-cta" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Solidity · Foundry · Fuzzing · Invariants · CI</p>
+          <h1 id="hero-title">Solidity Security &amp; Verification <span class="h1-sub">Evidence-Driven Smart Contract Testing</span></h1>
+          <p class="lead">I write specifications, adversarial tests and reproducible verification evidence for Solidity contracts. Each claim on this page links to public code, raw test output or a CI run that you can check yourself.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#case-study">See the case study</a>
+            <a class="btn btn-ghost" href="#contact">Request a quote</a>
+          </div>
+        </div>
+        <figure class="terminal" aria-labelledby="terminal-caption">
+          <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+          <pre class="terminal-body"><code><span class="t-dim">$</span> forge test --fuzz-seed 0x42
+<span class="t-dim">Ran 4 test suites:</span> <span class="t-ok">45 tests passed</span>, 0 failed, 0 skipped
+
+<span class="t-dim">$</span> forge coverage --report summary
+src/MilestoneEscrow.sol
+  lines <span class="t-ok">100.00%</span> (98/98)    branches <span class="t-ok">100.00%</span> (28/28)
+  stmts <span class="t-ok">100.00%</span> (141/141)  funcs    <span class="t-ok">100.00%</span> (13/13)
+
+<span class="t-dim">$</span> tools/mutation-check.sh
+<span class="t-ok">6 of 6</span> hand-written mutants detected</code></pre>
+          <figcaption id="terminal-caption">Abridged from the <a href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/tree/main/evidence">raw evidence files</a> of the MilestoneEscrow case study.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">What I can do for your contracts</h2>
+        <p class="section-intro">Each engagement ends with artifacts your team keeps and can re-run: tests, scripts, a written report and a CI workflow. The work adds evidence about your contracts. It does not guarantee that they have no vulnerabilities.</p>
+        <ul class="card-grid" role="list">
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V6l-9-4Z"/></svg>
+            <h3>Solidity Security Reviews</h3>
+            <p>Line-by-line review against a written specification: access control, state transitions, accounting, reentrancy and checks-effects-interactions, plus a findings report with severity and design notes.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/></svg>
+            <h3>Foundry Testing</h3>
+            <p>Deterministic unit and integration tests that map to specification properties, including boundary values, revert reasons and adversarial callback contracts.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v4H4zM16 4h4v4h-4zM10 10h4v4h-4zM4 16h4v4H4zM16 16h4v4h-4z"/></svg>
+            <h3>Fuzzing</h3>
+            <p>Property-based fuzz tests over parameters and configurations with fixed seeds, so every run, and every failure, can be reproduced.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg>
+            <h3>Invariant Testing</h3>
+            <p>Stateful handlers that run random sequences of actions and check system-wide properties such as fund conservation and solvency after every step.</p>
+          </li>
+          <li class="card">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/><circle cx="12" cy="12" r="10"/></svg>
+            <h3>CI Verification</h3>
+            <p>GitHub Actions workflows that pin the toolchain and run formatting, tests and coverage on every push. Mutation checks show which properties the tests actually enforce.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Case study -->
+    <section class="section section-alt" id="case-study" aria-labelledby="case-title">
+      <div class="container">
+        <p class="eyebrow">Case study</p>
+        <h2 id="case-title">MilestoneEscrow</h2>
+        <p class="section-intro">MilestoneEscrow is an ETH escrow for milestone-based work with a client, a contractor and a judge. It has submission, approval, dispute, arbitration, timeout refunds and pull-payment withdrawals. The case study pairs the contract with a written specification, four Foundry test suites and a verification report.</p>
+
+        <ul class="stats" role="list">
+          <li class="stat">
+            <span class="stat-value">45</span>
+            <span class="stat-label">tests passed, 0 failed, 0 skipped</span>
+            <span class="stat-detail">34 deterministic · 8 fuzz (1,000 runs each) · 3 invariant (256 × depth 64)</span>
+          </li>
+          <li class="stat">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">contract coverage</span>
+            <span class="stat-detail">Lines 98/98 · statements 141/141 · branches 28/28 · functions 13/13</span>
+          </li>
+          <li class="stat">
+            <span class="stat-value">6 / 6</span>
+            <span class="stat-label">mutations detected</span>
+            <span class="stat-detail">Hand-written mutants, full suite per mutant, run locally</span>
+          </li>
+          <li class="stat">
+            <span class="stat-value" aria-hidden="true">✓</span>
+            <span class="stat-label">GitHub Actions succeeded</span>
+            <span class="stat-detail">Format, tests and coverage on a clean <code>ubuntu-latest</code> runner</span>
+          </li>
+        </ul>
+
+        <div class="two-col">
+          <div>
+            <h3>What was tested</h3>
+            <ul class="check-list">
+              <li><strong>Cross-function reentrancy:</strong> receiver contracts call back into every lifecycle function during a withdrawal. A fuzzed equivalence property shows that a callback gives no more power than the same call made after the withdrawal.</li>
+              <li><strong>Fund conservation:</strong> invariants check that total funding always equals unallocated funds plus credits plus withdrawals, and that the escrow balance covers what it still owes.</li>
+              <li><strong>Constructor edge cases:</strong> each validation clause is tested on its own, including the maximum timestamps and arithmetic overflow at the boundaries.</li>
+              <li><strong>Mutation check:</strong> six deliberate faults, such as removing the reentrancy guard or allowing a dispute at the exact end of the review window, each made at least one test fail.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Mutants and the tests that caught them</h3>
+            <div class="table-wrap">
+              <table>
+                <caption class="visually-hidden">Hand-written mutants and the tests that detected them</caption>
+                <thead><tr><th scope="col">Mutant</th><th scope="col">Injected fault</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">M1</th><td>Withdrawal reentrancy guard removed</td></tr>
+                  <tr><th scope="row">M2</th><td>Escrow address accepted as a role</td></tr>
+                  <tr><th scope="row">M3</th><td>Overflow guard ignores arbitration period</td></tr>
+                  <tr><th scope="row">M4</th><td>30-day review window rejected</td></tr>
+                  <tr><th scope="row">M5</th><td>Dispute allowed at <code>reviewEnds</code></td></tr>
+                  <tr><th scope="row">M6</th><td>33 milestones accepted</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="links-title">Check the evidence yourself</h3>
+        <ul class="link-grid" role="list">
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/blob/main/src/MilestoneEscrow.sol"><span class="link-kind">Code</span><span class="link-name">MilestoneEscrow.sol</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/tree/main/test"><span class="link-kind">Code</span><span class="link-name">Test suites</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/blob/main/docs/VERIFICATION.md"><span class="link-kind">Report</span><span class="link-name">Verification report</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/blob/main/docs/SPECIFICATION.md"><span class="link-kind">Report</span><span class="link-name">Specification</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/tree/main/evidence"><span class="link-kind">Evidence</span><span class="link-name">Raw outputs &amp; SHA-256 sums</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/actions/workflows/test.yml"><span class="link-kind">CI</span><span class="link-name">GitHub Actions workflow runs</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification/blob/main/.github/workflows/test.yml"><span class="link-kind">CI</span><span class="link-name">Workflow definition</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/milestone-escrow-verification"><span class="link-kind">Repository</span><span class="link-name">milestone-escrow-verification</span></a></li>
+        </ul>
+        <p class="fine-print">Toolchain: Foundry 1.4.4, solc 0.8.28, Cancun EVM, fuzz seed <code>0x42</code>. The figures come from the verification report dated 15 November 2026. The contract was not modified during verification.</p>
+      </div>
+    </section>
+
+    <!-- EIP-7702 -->
+    <section class="section" id="eip-7702" aria-labelledby="lab-title">
+      <div class="container">
+        <p class="eyebrow">Research lab</p>
+        <h2 id="lab-title">EIP-7702 and the “is the caller an EOA?” assumption</h2>
+        <div class="two-col">
+          <div>
+            <p>After EIP-7702, an externally owned account can install a delegation designator as its code. Checks such as <code>code.length == 0</code> or <code>tx.origin == msg.sender</code>, long used to mean “this caller is a plain EOA”, no longer reliably mean that.</p>
+            <p>The <a href="https://github.com/francodoneddu-ctrl/eip7702-eoa-lab">eip7702-eoa-lab</a> repository contains:</p>
+            <ul class="check-list">
+              <li>a shell script for a local Anvil chain that calls an “only-EOA” guard from the same account before and after a 7702 delegation;</li>
+              <li>a prototype pre-signing policy that checks a delegation target against an allowlist, the chain ID, code presence and the bytecode hash;</li>
+              <li>notes from a short manual review of four open-source account-abstraction projects for this pattern.</li>
+            </ul>
+          </div>
+          <aside class="note" aria-label="Status of the EIP-7702 lab">
+            <h3>Status, stated plainly</h3>
+            <ul>
+              <li>This is a known class of assumption break, not a new vulnerability disclosure.</li>
+              <li>The repository publishes the scripts and a README. It has <strong>no CI workflow and no recorded run output</strong>, so this page reports no test results for it.</li>
+              <li>The review notes are the author’s own reading of public code. They are not audit findings.</li>
+              <li>The policy prototype only helps if it sits in a mandatory signing path, so it does not stop an attacker who already holds the private key.</li>
+              <li>Everything runs locally with public Anvil test keys and no real funds.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology & Limitations -->
+    <section class="section section-alt" id="methodology" aria-labelledby="method-title">
+      <div class="container">
+        <p class="eyebrow">Methodology &amp; Limitations</p>
+        <h2 id="method-title">How the work is done, and what it does not prove</h2>
+        <div class="two-col">
+          <div>
+            <h3>Methodology</h3>
+            <ol class="steps">
+              <li><strong>Specify.</strong> Write down roles, states, transitions and the properties that must always hold.</li>
+              <li><strong>Map.</strong> Link each property to at least one deterministic, fuzz or invariant test.</li>
+              <li><strong>Attack.</strong> Add adversarial actors such as reentrant receivers, recipients that reject payment and boundary timestamps.</li>
+              <li><strong>Challenge the tests.</strong> Inject faults by hand and confirm that the suite detects them.</li>
+              <li><strong>Reproduce.</strong> Pin the toolchain and seeds, keep the raw output and SHA-256 sums, and run everything in CI.</li>
+              <li><strong>Report.</strong> State the findings, the design decisions you accepted and the limits of the work.</li>
+            </ol>
+          </div>
+          <div class="limits" role="note" aria-labelledby="limits-title">
+            <h3 id="limits-title">Limitations</h3>
+            <ul>
+              <li><strong>MilestoneEscrow is a portfolio project developed with AI assistance.</strong> Both the contract and the tests were produced that way and then reviewed and verified by the author.</li>
+              <li><strong>It has not been independently audited.</strong> The verification report is a self-review.</li>
+              <li><strong>It is not suitable for production</strong> and has never been deployed. Do not use it to hold real funds.</li>
+              <li>Coverage measures which code ran. It does not show that the code is secure.</li>
+              <li>The six mutants were chosen by hand. They are not a generated mutation campaign, and no mutation score is claimed.</li>
+              <li>No formal verification, gas study or testnet deployment rehearsal has been performed.</li>
+              <li>No engagement can guarantee that a contract is free of vulnerabilities. Independent audits remain recommended before you deploy anything that will hold value.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Request a quote</h2>
+        <p class="section-intro">A private contact channel for quote requests will be available soon. In the meantime, you can find my work on my GitHub profile.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/francodoneddu-ctrl">Visit my GitHub profile</a>
+        </div>
+        <p class="fine-print">Please do not send private keys, credentials, unpublished code or confidential business details through public channels.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Solidity Security &amp; Verification · <a href="https://github.com/francodoneddu-ctrl">github.com/francodoneddu-ctrl</a></p>
+      <p>This is a static page with no cookies, analytics or third-party scripts.</p>
+    </div>
+  </footer>
+</body>
+</html>
