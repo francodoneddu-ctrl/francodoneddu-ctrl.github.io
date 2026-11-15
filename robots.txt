@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://francodoneddu-ctrl.github.io/sitemap.xml
