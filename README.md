@@ -5,6 +5,7 @@ Static landing page served by GitHub Pages. It is plain HTML and CSS, with no bu
 - `index.html`: page content
 - `styles.css`: styles, with light and dark mode based on the visitor's system setting
 - `favicon.svg`: site icon
+- `robots.txt`, `sitemap.xml`: crawler hints for search engines
 - `.nojekyll`: serve the files as-is
 
 Every figure on the page links to its source in
