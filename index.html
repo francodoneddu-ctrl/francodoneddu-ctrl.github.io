@@ -21,7 +21,7 @@
     "description": "Foundry test suites, fuzzing, invariant testing and CI verification for existing Solidity contracts.",
     "email": "solidity.verify@icloud.com",
     "areaServed": "Worldwide",
-    "sameAs": ["https://github.com/francodoneddu-ctrl/milestone-escrow-verification"]
+    "sameAs": ["https://github.com/francodoneddu-ctrl/milestone-escrow-verification", "https://github.com/francodoneddu-ctrl/walletguard"]
   }
   </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -214,6 +214,33 @@ src/MilestoneEscrow.sol
             </ul>
           </aside>
         </div>
+
+        <h3 class="links-title">WalletGuard: a pre-signing check for EIP-7702 authorizations</h3>
+        <div class="two-col">
+          <div>
+            <p><a href="https://github.com/francodoneddu-ctrl/walletguard">WalletGuard</a> grew out of the lab. It is an offline analyzer that looks at an EIP-7702 authorization <strong>before</strong> it is signed or sent and returns <code>ALLOW</code>, <code>WARN</code> or <code>BLOCK</code> with the reasons.</p>
+            <ul class="check-list">
+              <li>recovers the signer from the EIP-7702 digest and enforces the standard’s bounds, including the EIP-2 low-s rule;</li>
+              <li>an allowlist bound to chain ID, delegate address and the keccak256 hash of the delegate’s runtime bytecode — same address with different code is <code>BLOCK</code>;</li>
+              <li>fail-closed: missing data is never <code>ALLOW</code>, any internal error is <code>BLOCK</code>;</li>
+              <li>204 offline tests, and a local Anvil (Prague) demo that passes 27 of 27 checks, including a control run showing the EVM really applies the blocked delegation.</li>
+            </ul>
+          </div>
+          <aside class="note" aria-label="Status of WalletGuard">
+            <h3>Status, stated plainly</h3>
+            <ul>
+              <li>A research demonstrator (v1.4.0), not a product and not audited.</li>
+              <li>The only verified delegate is a harmless demo contract on a local chain; no real network was checked.</li>
+              <li>It judges the identity of the delegate code, not its behaviour.</li>
+              <li>Not yet wired into a real wallet.</li>
+            </ul>
+          </aside>
+        </div>
+        <ul class="link-grid" role="list">
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard"><span class="link-kind">Repository</span><span class="link-name">walletguard</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard/blob/main/demo_e2e/output_demo.txt"><span class="link-kind">Evidence</span><span class="link-name">Anvil demo output (27/27)</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard/tree/main/tests"><span class="link-kind">Code</span><span class="link-name">Test suites</span></a></li>
+        </ul>
       </div>
     </section>
 
