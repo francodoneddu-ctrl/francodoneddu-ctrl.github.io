@@ -20,6 +20,7 @@
     "url": "https://francodoneddu-ctrl.github.io/",
     "description": "Foundry test suites, fuzzing, invariant testing and CI verification for existing Solidity contracts.",
     "email": "solidity.verify@icloud.com",
+    "founder": {"@type": "Person", "name": "Francesco Doneddu"},
     "areaServed": "Worldwide",
     "sameAs": ["https://github.com/francodoneddu-ctrl/milestone-escrow-verification", "https://github.com/francodoneddu-ctrl/walletguard"]
   }
@@ -55,7 +56,7 @@
         <div>
           <p class="eyebrow">Solidity · Foundry · Fuzzing · Invariants · CI</p>
           <h1 id="hero-title">Solidity Security &amp; Verification <span class="h1-sub">Evidence-Driven Smart Contract Testing</span></h1>
-          <p class="lead">I write specifications, adversarial tests and reproducible verification evidence for Solidity contracts. The case-study figures on this page link to public code, raw test output or a CI run that you can check yourself.</p>
+          <p class="lead">I’m Francesco Doneddu, an independent security researcher. I write specifications, adversarial tests and reproducible verification evidence for Solidity contracts. The case-study figures on this page link to public code, raw test output or a CI run that you can check yourself.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#case-study">See the case study</a>
             <a class="btn btn-ghost" href="#contact">Request a quote</a>
@@ -215,30 +216,32 @@ src/MilestoneEscrow.sol
           </aside>
         </div>
 
-        <h3 class="links-title">WalletGuard: a pre-signing check for EIP-7702 authorizations</h3>
+        <h3 class="links-title">WalletGuard: stopping unapproved EIP-7702 delegations before signing and before broadcast</h3>
         <div class="two-col">
           <div>
-            <p><a href="https://github.com/francodoneddu-ctrl/walletguard">WalletGuard</a> grew out of the lab. It is an offline analyzer that looks at an EIP-7702 authorization <strong>before</strong> it is signed or sent and returns <code>ALLOW</code>, <code>WARN</code> or <code>BLOCK</code> with the reasons.</p>
+            <p><a href="https://github.com/francodoneddu-ctrl/walletguard">WalletGuard</a> grew out of the lab. It looks at an EIP-7702 authorization <strong>before</strong> it is signed or sent and returns <code>ALLOW</code>, <code>WARN</code> or <code>BLOCK</code> with the reasons. Since v1.5 it also ships an <strong>RPC guard</strong>: a JSON-RPC endpoint placed between any wallet and the node, which drops unapproved type-0x04 transactions before they reach the network.</p>
             <ul class="check-list">
               <li>recovers the signer from the EIP-7702 digest and enforces the standard’s bounds, including the EIP-2 low-s rule;</li>
               <li>an allowlist bound to chain ID, delegate address and the keccak256 hash of the delegate’s runtime bytecode — same address with different code is <code>BLOCK</code>;</li>
               <li>fail-closed: missing data is never <code>ALLOW</code>, any internal error is <code>BLOCK</code>;</li>
-              <li>204 offline tests, and a local Anvil (Prague) demo that passes 27 of 27 checks, including a control run showing the EVM really applies the blocked delegation.</li>
+              <li>RPC guard: forwards a type-0x04 transaction only if every authorization tuple is <code>ALLOW</code>; also rejects node-admin methods that would bypass it, and can restrict which accounts may delegate;</li>
+              <li>249 offline tests, plus two local Anvil (Prague) demos: wallet hooks, 27 of 27 checks; a real client (Foundry <code>cast</code>) sending through the RPC guard, 17 of 17 checks. Both include a control run showing the EVM really applies the delegation when the guard is removed.</li>
             </ul>
           </div>
           <aside class="note" aria-label="Status of WalletGuard">
             <h3>Status, stated plainly</h3>
             <ul>
-              <li>A research demonstrator (v1.4.0), not a product and not audited.</li>
+              <li>A research demonstrator (v1.5.0), not a product and not audited.</li>
               <li>The only verified delegate is a harmless demo contract on a local chain; no real network was checked.</li>
               <li>It judges the identity of the delegate code, not its behaviour.</li>
-              <li>Not yet wired into a real wallet.</li>
+              <li>The RPC guard blocks before broadcast, not before signing, and runs on a local chain only. It was tested with <code>cast</code>, not yet with MetaMask or Rabby.</li>
             </ul>
           </aside>
         </div>
         <ul class="link-grid" role="list">
           <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard"><span class="link-kind">Repository</span><span class="link-name">walletguard</span></a></li>
           <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard/blob/main/demo_e2e/output_demo.txt"><span class="link-kind">Evidence</span><span class="link-name">Anvil demo output (27/27)</span></a></li>
+          <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard/blob/main/demo_e2e/risultato_casello.json"><span class="link-kind">Evidence</span><span class="link-name">RPC guard demo result (17/17)</span></a></li>
           <li><a class="link-card" href="https://github.com/francodoneddu-ctrl/walletguard/tree/main/tests"><span class="link-kind">Code</span><span class="link-name">Test suites</span></a></li>
         </ul>
       </div>
@@ -293,7 +296,7 @@ src/MilestoneEscrow.sol
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>Solidity Security &amp; Verification · <a href="https://github.com/francodoneddu-ctrl">github.com/francodoneddu-ctrl</a></p>
+      <p>Francesco Doneddu · Solidity Security &amp; Verification · <a href="https://github.com/francodoneddu-ctrl">github.com/francodoneddu-ctrl</a></p>
       <p>This is a static page with no cookies, analytics or third-party scripts.</p>
     </div>
   </footer>
